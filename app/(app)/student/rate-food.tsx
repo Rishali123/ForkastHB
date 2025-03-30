@@ -222,7 +222,9 @@ export default function RateFood() {
         </Modal>
 
         {categories.map((category, index) => (
-          <RatingCategory key={category.key} category={category} index={index} />
+          <>
+            <RatingCategory category={category} index={index} />
+          </>
         ))}
 
         <View style={styles.commentContainer}>

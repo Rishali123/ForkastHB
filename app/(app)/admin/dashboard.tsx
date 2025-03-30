@@ -242,7 +242,6 @@ export default function AdminDashboard() {
             <View style={styles.menuInputs}>
               {menuItems.map((item, index) => (
                 <TextInput
-                  key={index}
                   style={styles.menuInput}
                   placeholder={`Menu Item ${index + 1}`}
                   value={item}

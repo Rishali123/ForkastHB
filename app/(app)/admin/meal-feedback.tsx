@@ -52,12 +52,13 @@ export default function MealFeedback() {
     return (
       <View style={styles.starsContainer}>
         {Array.from({ length: 5 }).map((_, index) => (
-          <Ionicons
-            key={index}
-            name={index < rating ? 'star' : 'star-outline'}
-            size={16}
-            color={index < rating ? '#FFD700' : '#ddd'}
-          />
+          <>
+            <Ionicons
+              name={index < rating ? 'star' : 'star-outline'}
+              size={16}
+              color={index < rating ? '#FFD700' : '#ddd'}
+            />
+          </>
         ))}
       </View>
     );
@@ -83,43 +84,45 @@ export default function MealFeedback() {
 
       <ScrollView style={styles.content}>
         {feedback.map((item) => (
-          <View key={item.id} style={styles.feedbackCard}>
-            <LinearGradient
-              colors={['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.7)']}
-              style={styles.cardGradient}
-            >
-              <View style={styles.dateContainer}>
-                <Ionicons name="calendar-outline" size={16} color="#666" />
-                <Text style={styles.dateText}>{item.date}</Text>
-              </View>
+          <>
+            <View style={styles.feedbackCard}>
+              <LinearGradient
+                colors={['rgba(255,255,255,0.9)', 'rgba(255,255,255,0.7)']}
+                style={styles.cardGradient}
+              >
+                <View style={styles.dateContainer}>
+                  <Ionicons name="calendar-outline" size={16} color="#666" />
+                  <Text style={styles.dateText}>{item.date}</Text>
+                </View>
 
-              <View style={styles.ratingsContainer}>
-                <View style={styles.ratingRow}>
-                  <Text style={styles.ratingLabel}>Taste</Text>
-                  {renderStars(item.ratings.taste)}
+                <View style={styles.ratingsContainer}>
+                  <View style={styles.ratingRow}>
+                    <Text style={styles.ratingLabel}>Taste</Text>
+                    {renderStars(item.ratings.taste)}
+                  </View>
+                  <View style={styles.ratingRow}>
+                    <Text style={styles.ratingLabel}>Portion</Text>
+                    {renderStars(item.ratings.portion)}
+                  </View>
+                  <View style={styles.ratingRow}>
+                    <Text style={styles.ratingLabel}>Variety</Text>
+                    {renderStars(item.ratings.variety)}
+                  </View>
+                  <View style={styles.ratingRow}>
+                    <Text style={styles.ratingLabel}>Overall</Text>
+                    {renderStars(item.ratings.overall)}
+                  </View>
                 </View>
-                <View style={styles.ratingRow}>
-                  <Text style={styles.ratingLabel}>Portion</Text>
-                  {renderStars(item.ratings.portion)}
-                </View>
-                <View style={styles.ratingRow}>
-                  <Text style={styles.ratingLabel}>Variety</Text>
-                  {renderStars(item.ratings.variety)}
-                </View>
-                <View style={styles.ratingRow}>
-                  <Text style={styles.ratingLabel}>Overall</Text>
-                  {renderStars(item.ratings.overall)}
-                </View>
-              </View>
 
-              {item.comment && (
-                <View style={styles.commentContainer}>
-                  <Text style={styles.commentLabel}>Comment:</Text>
-                  <Text style={styles.commentText}>{item.comment}</Text>
-                </View>
-              )}
-            </LinearGradient>
-          </View>
+                {item.comment && (
+                  <View style={styles.commentContainer}>
+                    <Text style={styles.commentLabel}>Comment:</Text>
+                    <Text style={styles.commentText}>{item.comment}</Text>
+                  </View>
+                )}
+              </LinearGradient>
+            </View>
+          </>
         ))}
       </ScrollView>
     </LinearGradient>
